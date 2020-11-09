@@ -1,0 +1,16 @@
+<h1>New Game</h1>
+<ul class='list-inline'>
+  <% @words.each do |letter| %>
+    <li class='list-inline-item'><%= letter %></li>
+  <% end %>
+</ul>
+
+<% time = Time.now %>
+<% time_start = time.strftime("%k%M%S") %>
+<form action="/score" method='POST'>
+  <input type="text" name="created_word" autofocus>
+  <input type="submit">
+  <input name="words" type="hidden" value=<%=@words.join()%>>
+  <input type="hidden" name="time" value=<%= time_start %>>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>

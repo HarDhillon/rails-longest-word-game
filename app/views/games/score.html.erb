@@ -1,0 +1,15 @@
+<h1>Result</h1>
+
+<% case @response %>
+<% when 'no build' %>
+  <p>
+  Sorry but <strong><%= @display_attempt %></strong> can’t be built out of <strong><%= @display_grid %></strong>
+  </p>
+<% when 'valid' %>
+  <p>Congratulations! <strong><%= @display_attempt %></strong> is a valid English word!</p>
+  <p>Score: <%= @score %></p>
+<% else %> <p>Sorry but <strong><%= @display_attempt %></strong> does not seem to be a valid English word</p>
+<% end %>
+
+<p><%= link_to "Try Again", '/new' %></p>
+
